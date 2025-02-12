@@ -1,0 +1,91 @@
+.chatbot-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #1E3A8A;
+}
+
+.upload-section, .chat-section {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
+input[type="file"], input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  background: #dee6f9;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #FFD700;
+  color: #1E3A8A;
+}
+
+/* Estilos del chat */
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+}
+
+.user {
+  background: #1E3A8A;
+  color: white;
+  align-self: flex-end;
+}
+
+.bot {
+  background: #FFD700;
+  color: #1E3A8A;
+  align-self: flex-start;
+}
+
+.input-section {
+  display: flex;
+  margin-top: 10px;
+}
+
+.input-section input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.input-section button {
+  margin-left: 5px;
+}

@@ -1,0 +1,35 @@
+<!-- <div class="container">
+    <h1>Chatbot - Moody's CreditLens</h1>
+    <div class="card">
+      <p>Consulta al Chatbot</p>
+      <input placeholder="Escribe tu pregunta" type="text" />
+      <button class="btn-primary">Enviar Pregunta</button>
+    </div>
+  </div>
+   -->
+  <div class="chatbot-container">
+    <h1>💬 Chatbot - Moody's CreditLens</h1>
+    <!-- <button class="logout-btn" (click)="logout()">🚪 Cerrar Sesión</button> -->
+
+    <!-- Sección para subir archivos -->
+    <section class="upload-section" *ngIf="authService.getUser() === 'admin'">
+      <h2>📄 Subir documentos</h2>
+      <input type="file" (change)="onFileSelected($event)" multiple />
+      <button (click)="uploadFiles()">📤 Subir documentos</button>
+    </section>
+  
+    <!-- Sección del chat -->
+    <section class="chat-section">
+      <div class="chat-box">
+        <div *ngFor="let message of messages" class="message" [ngClass]="message.sender">
+          <span>{{ message.text }}</span>
+        </div>
+      </div>
+  
+      <div class="input-section">
+        <input id="questionInput" [(ngModel)]="question" type="text" placeholder="Escribe tu pregunta">
+        <button (click)="sendQuestion()">💡 Enviar</button>
+      </div>
+    </section>
+  </div>
+  

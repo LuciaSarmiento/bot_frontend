@@ -1,0 +1,42 @@
+<!-- Se instala Angular Material para mejorar la interfaz con 
+ng add @angular/material
+-->
+
+<mat-toolbar color="primary" class="navbar">
+  <!-- <div class="logo">
+    <img src="assets/logo.jpg" alt="Logo">
+  </div> -->
+  <span class="title">CreditLens Chatbot</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="navigateTo('chatbot')">💬 Chatbot</button>
+  <button mat-button (click)="navigateTo('metrics')" *ngIf="authService.getUser() === 'admin'">📊 Métricas</button>
+  <!-- Mostrar "Login" si el usuario NO está autenticado -->
+  <button mat-button *ngIf="!authService.isAuthenticated()" (click)="navigateTo('login')">🔐 Login</button>
+
+  <!-- Mostrar "Cerrar Sesión" si el usuario está autenticado -->
+  <button mat-button *ngIf="authService.isAuthenticated()" (click)="logout()">🚪 Cerrar Sesión</button>
+  
+</mat-toolbar>
+
+<!-- Si el usuario no está autenticado, muestra solo el login -->
+<div *ngIf="!authService.isAuthenticated(); else authenticatedTemplate">
+  <app-login></app-login>
+</div>
+
+<!-- Si está autenticado, muestra el router-outlet para cargar Chatbot o Métricas -->
+<ng-template #authenticatedTemplate>
+  <router-outlet></router-outlet>
+</ng-template>
+
+<!-- <div *ngIf="!authService.isAuthenticated(); else chatbotTemplate">
+  <app-login></app-login>
+</div>
+
+
+<ng-template #chatbotTemplate>
+  <app-chatbot></app-chatbot>
+  <button class="logout-btn" (click)="logout()">🚪 Cerrar Sesión</button>
+</ng-template> -->
+
+<!-- <router-outlet></router-outlet> -->
+
