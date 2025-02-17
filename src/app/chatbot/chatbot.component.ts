@@ -16,6 +16,7 @@ import { AuthService } from '../auth.service';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-chatbot',
@@ -25,7 +26,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./chatbot.component.css']
 })
 export class ChatbotComponent {
-  apiUrl = 'http://localhost:8000'; // URL del backend
+  apiUrl = 'https://bot-backend-jeap.onrender.com'; // URL del backend
   uploadedFiles: File[] = [];
   question: string = '';
   messages: { text: string; sender: 'user' | 'bot' }[] = []; // Historial de mensajes
@@ -67,9 +68,11 @@ export class ChatbotComponent {
     // Agregar pregunta al historial
     this.messages.push({ text: this.question, sender: 'user' });
 
-    this.http.post(`${this.apiUrl}/query`, { question: this.question })
-      .subscribe(
+    console.log("ques->"+this.question);
+    this.http.post(`${this.apiUrl}/queries`, { "question": this.question, "userId": 1 }) //CAMBIAR LUEGO EL ID DE USUARIO  
+    .subscribe(
         (res: any) => {
+          //alert("res->"+res);
           this.messages.push({ text: res.response, sender: 'bot' }); // Agregar respuesta del bot al historial
           this.question = ''; // Limpiar input
         },
