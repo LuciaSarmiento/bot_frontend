@@ -18,10 +18,19 @@ export class LoginComponent {
 
   constructor(public  authService: AuthService, private router: Router) {}
 
-  login() {
+  /* login() {
     if (this.authService.login(this.username, this.password)) {
     } else {
       this.errorMessage = 'Usuario o contraseña incorrectos';
     }
+  } */
+  login() {
+    this.authService.login(this.username, this.password).subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        // this.router.navigate(['/chatbot']); // Redirige al chatbot si el login es exitoso
+      } else {
+        this.errorMessage = 'Usuario o contraseña incorrectos';
+      }
+    });
   }
 }

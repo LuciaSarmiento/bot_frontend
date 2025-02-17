@@ -1,26 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private users: { [key: string]: string } = {  // Aquí agregamos el tipo de índice
-    admin: 'admin123',
-    user1: 'user123'
-  };
   
+  private apiUrl = 'https://bot-backend-jeap.onrender.com/users/exist/';
   private loggedInUser = new BehaviorSubject<string | null>(null);
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  login(username: string, password: string): boolean {
-    if (this.users[username] && this.users[username] === password) {
-      this.loggedInUser.next(username);
-      return true;
-    }
-    return false;
+  login(username: string, password: string): Observable<boolean> {
+    const body = { username, password };
+
+    return this.http.post<any>(this.apiUrl, body).pipe(
+      map(response => {
+        if (response && response.username) {  
+          this.loggedInUser.next(response.username);  
+          return true;
+        }
+        return false;
+      }),
+      catchError(() => {
+        return [false];  // En caso de error, retorna `false`
+      })
+    );
   }
 
   logout() {
