@@ -12,6 +12,10 @@ h1 {
   color: #1E3A8A;
 }
 
+h2 {
+  text-align: center;
+  color: #1E3A8A;
+}
 .upload-section, .chat-section {
   margin-top: 20px;
   padding: 10px;
@@ -62,6 +66,10 @@ button:hover {
   border-radius: 10px;
 }
 
+.message span {
+  white-space: pre-line;
+}
+
 .user {
   background: #1E3A8A;
   color: white;
@@ -69,7 +77,7 @@ button:hover {
 }
 
 .bot {
-  background: #FFD700;
+  background: #ffe551;
   color: #1E3A8A;
   align-self: flex-start;
 }

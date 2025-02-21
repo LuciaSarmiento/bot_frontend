@@ -8,12 +8,12 @@
   </div>
    -->
   <div class="chatbot-container">
-    <h1>💬 Chatbot - Moody's CreditLens</h1>
+    <h2>💬 Chatbot - Moody's CreditLens</h2>
     <!-- <button class="logout-btn" (click)="logout()">🚪 Cerrar Sesión</button> -->
 
     <!-- Sección para subir archivos -->
     <section class="upload-section" *ngIf="authService.getUser() === 'admin'">
-      <h2>📄 Subir documentos</h2>
+      <h3>📄 Subir documentos</h3>
       <input type="file" (change)="onFileSelected($event)" multiple />
       <button (click)="uploadFiles()">📤 Subir documentos</button>
     </section>
