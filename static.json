@@ -1,5 +1,5 @@
 {
-    "root": "dist/chatbot-angular",
+    "root": "./dist/chatbot-angular",
     "routes": {
       "/**": "index.html"
     }
